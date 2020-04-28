@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 /**
  * Script de construction de la presentation markdown par pandoc
  * Paramètres :
