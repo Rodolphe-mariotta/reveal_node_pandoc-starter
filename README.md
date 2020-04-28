@@ -22,7 +22,7 @@ Ce projet à besoin des éléments suivant :
 - `yarn install` pour installer le dépendances
 
 - `yarn build` pour contruire la presentation dans le repetoire (par defaut dans output/)
-- ou `yarn build` pour contruire la presentation et demarrer un serveur web sur localhost:8080
+- ou `yarn serve` pour contruire la presentation et demarrer un serveur web sur localhost:8080
 
 ## Fabriqué avec
 
