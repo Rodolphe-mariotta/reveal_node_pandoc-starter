@@ -1,0 +1,66 @@
+{
+  "name": "reveal_node_pandoc-starter",
+  "version": "0.0.2",
+  "description": "Un starter pour les presentation en markdown",
+  "main": "index.js",
+  "repository": "git@github.com:Rodolphe-mariotta/reveal_node_pandoc-starter.git",
+  "author": "Rodolphe MARIOTTA <rodolphe.mariotta@maif.fr>",
+  "license": "GPL",
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "cz-conventional-changelog": "^3.1.0",
+    "express": "^4.17.1",
+    "git-precommit-checks": "^3.0.3",
+    "husky": "^4.2.5",
+    "junk": "^3.1.0",
+    "node-pandoc": "^0.3.0",
+    "socket.io": "^2.3.0",
+    "socket.io-client": "^2.3.0"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "git-precommit-checks"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "git-precommit-checks": {
+    "display": {
+      "offendingContent": true,
+      "shortStats": true
+    },
+    "rules": [
+      {
+        "filter": "\\.js$",
+        "nonBlocking": "true",
+        "message": "You’ve got leftover `console.log`",
+        "regex": "console\\.log"
+      },
+      {
+        "message": "You’ve got leftover conflict markers",
+        "regex": "/^[<>|=]{4,}/m"
+      },
+      {
+        "nonBlocking": "true",
+        "message": "You have unfinished devs",
+        "regex": "(?:FIXME|TODO)"
+      }
+    ]
+  },
+  "scripts": {
+    "build": "node ./scripts/build.js --build",
+    "serve": "node ./scripts/build.js --serve"
+  }
+}
