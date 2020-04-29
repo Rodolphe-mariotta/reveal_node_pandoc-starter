@@ -36,9 +36,9 @@ console.log('destinationFolder <%s>', destinationFolder)
 const args = process.argv
 
 /**
- * construit
- * @param {*} file
- * @param {*} dest
+ * copie ou transforme les fichiers
+ * @param {*} Objet contenant les informations du fichier sources
+ * @param {*} dest repertoire de destiantion
  */
 async function generate(file, dest) {
   const destPath = path.join(dest, file.folderName)
@@ -72,11 +72,11 @@ const pandocCallback = function (err, result) {
 /**
  * retourne la liste des fichiers trouvé.
  * les fichier son filtré par l'usage de junk
- * TODO a mettre en plugin
+ * @param {*} firstDir repertoire racine
  * @param {*} folderName le nom du repertoire à traiter
  * @param {*} result la liste des fichiers trouvé
  */
-async function parseFolder(folderName, folderSource, result = []) {
+async function parseFolder(firstDir, folderName, result = []) {
   const files = await fs.promises.readdir(folderName)
 
   for (const file of files) {
@@ -85,12 +85,12 @@ async function parseFolder(folderName, folderSource, result = []) {
     const stat = await fs.promises.stat(fromPath)
 
     if (stat.isFile() && junk.not(file)) {
-      const dest = currentFolder.slice(folderSource.length, fromPath.length)
-
+      const dest = currentFolder.slice(firstDir.length, currentFolder.length)
       const fileInfo = { fileName: file, filePath: fromPath, folderName: dest }
+
       result.push(fileInfo)
     } else if (stat.isDirectory()) {
-      result = await parseFolder(fromPath, folderSource, result)
+      result = await parseFolder(firstDir, fromPath, result)
     }
   }
 
@@ -111,7 +111,7 @@ async function build(sourceDir, destinationDir) {
     )
     console.log('[CONFIG] Pandoc args: %s', pandocParam)
 
-    await parseFolder(sourceDir, destinationDir)
+    await parseFolder(sourceDir, sourceDir)
       .then(
         (fileList) => {
           fileList.forEach((element) => {
