@@ -59,6 +59,7 @@ async function generate(file, dest) {
     console.log('[COPY] from %s to %s', file.filePath, destFile)
     fs.copyFileSync(file.filePath, destFile)
   }
+  return true
 }
 
 const pandocCallback = function (err, result) {
@@ -211,9 +212,10 @@ async function start_server(sourceFolder, destinationFolder, config) {
         data +
           '<script src="/socket.io.js"></script>' +
           '<script>' +
+          "function callb_reload(){console.log('reload');window.location.reload();};" +
           '  var socket = io();' +
           '  socket.on("file-change-event", function () {' +
-          '    window.location.reload();' +
+          '    setTimeout(callb_reload, 100)' +
           '  });' +
           '</script>'
       )
@@ -245,8 +247,11 @@ async function start_sync(sourceFolder, destinationFolder) {
           filePath: filePath,
           folderName: dest,
         }
-        generate(fileInfo, destinationFolder)
-        io.emit('file-change-event')
+        generate(fileInfo, destinationFolder).then((res) => {
+          if (res) {
+            io.emit('file-change-event')
+          }
+        })
       } else {
         // TODO traiter les rename et suppression
         console.log('event =<%s> - filename =<%s>', event, filename)
