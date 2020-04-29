@@ -50,9 +50,9 @@ Si vous souhaitez contribuer, lisez le fichier [CONTRIBUTING.md](CONTRIBUTING.md
 
 ## Versions
 
-**Dernière version stable :** DoneQaD
+**Dernière version stable :** QaD_two
 
-**Dernière version :** DoneQaD
+**Dernière version :** QaD_two
 Liste des versions : [Cliquer pour afficher](https://github.com/Rodolphe-mariotta/reveal_node_pandoc-starter/tags)
 
 ## Auteurs
