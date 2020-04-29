@@ -1,6 +1,6 @@
 # Reveal_Node_Pandoc-starter
 
-[![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com) [![forthebadge](http://forthebadge.com/images/badges/ages-18.svg)](http://forthebadge.com)
+![Love](badge_love.svg) ![18+](badge_age.svg) [![DEMO](badge_demo.svg)](https://rodolphe-mariotta.github.io/reveal_node_pandoc-starter/demo.html) [![PRESENTATION](badge_presentation.svg)](https://rodolphe-mariotta.github.io/reveal_node_pandoc-starter/)
 
 Un starter pour vos présentation reveal.js écrite en markdown, pandoc pour transformer vos .md en .html et un peu de node pour avoir du chargement à chaud.
 
@@ -51,6 +51,7 @@ Si vous souhaitez contribuer, lisez le fichier [CONTRIBUTING.md](CONTRIBUTING.md
 ## Versions
 
 **Dernière version stable :** DoneQaD
+
 **Dernière version :** DoneQaD
 Liste des versions : [Cliquer pour afficher](https://github.com/Rodolphe-mariotta/reveal_node_pandoc-starter/tags)
 
