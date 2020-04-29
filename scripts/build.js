@@ -241,25 +241,54 @@ async function start_sync(sourceFolder, destinationFolder) {
       const fileFolder = path.dirname(filePath)
       const dest = fileFolder.slice(sourceFolder.length, fileFolder.length)
 
-      if ('change' === event) {
-        const fileInfo = {
-          fileName: path.basename(filePath),
-          filePath: filePath,
-          folderName: dest,
-        }
-        generate(fileInfo, destinationFolder).then((res) => {
-          if (res) {
-            io.emit('file-change-event')
-          }
-        })
-      } else {
-        // TODO traiter les rename et suppression
-        console.log('event =<%s> - filename =<%s>', event, filename)
+      const fileInfo = {
+        fileName: path.basename(filePath),
+        filePath: filePath,
+        folderName: dest,
       }
+
+      getFileAction(event, filePath).then((actionFile) => {
+        if (fileState.FILE === actionFile) {
+          generate(fileInfo, destinationFolder).then((result) => {
+            if (result) {
+              io.emit('file-change-event')
+            }
+          })
+        }
+      })
     }
   })
 
   return true
+}
+
+async function getFileAction(event, filePath) {
+  if ('change' === event) {
+    return fileState.FILE
+  }
+
+  if (fs.existsSync(filePath)) {
+    const stat = await fs.promises.stat(filePath)
+
+    if (stat.isDirectory()) {
+      return fileState.DIRECTORY
+    }
+
+    if (stat.isFile()) {
+      return fileState.FILE
+    }
+
+    return fileState.UNKNOWN
+  } else {
+    return fileState.DELETE
+  }
+}
+
+const fileState = {
+  DIRECTORY: 'DIRECTORY',
+  FILE: 'FILE',
+  DELETE: 'DELETE',
+  UNKNOWN: 'UNKNOWN',
 }
 
 /**
