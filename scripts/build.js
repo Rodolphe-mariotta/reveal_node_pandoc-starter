@@ -10,6 +10,7 @@ const path = require('path')
 const junk = require('junk')
 const pandoc = require('node-pandoc')
 const express = require('express')
+const color = require('colors')
 
 const app = express()
 const http = require('http').Server(app)
@@ -45,7 +46,7 @@ async function generate(file, dest) {
   const destFile = path.join(destPath, file.fileName)
 
   if (!fs.existsSync(destPath)) {
-    console.log('[MKDIR] create dir %s', destPath)
+    console.log('[%s] create dir %s', 'MKDIR'.green, destPath)
     fs.mkdirSync(destPath, { recursive: true })
   }
 
@@ -53,10 +54,15 @@ async function generate(file, dest) {
     const markdownDestFile = destFile.replace(extRegExp, '.html')
     const args = '-o ' + markdownDestFile + ' ' + pandocParam
 
-    console.log('[PANDOC] file from %s to %s', file.filePath, markdownDestFile)
+    console.log(
+      '[%s] file from %s to %s',
+      'PANDOC'.green,
+      file.filePath,
+      markdownDestFile
+    )
     pandoc(file.filePath, args, pandocCallback)
   } else {
-    console.log('[COPY] from %s to %s', file.filePath, destFile)
+    console.log('[%s] from %s to %s', 'COPY'.green, file.filePath, destFile)
     fs.copyFileSync(file.filePath, destFile)
   }
   return true
@@ -64,7 +70,7 @@ async function generate(file, dest) {
 
 const pandocCallback = function (err, result) {
   if (err) {
-    console.error('PANDOC - Oh Nos: ', err)
+    console.error('PANDOC - Oh Nos: '.red, err)
   }
   return result
 }
@@ -105,11 +111,12 @@ async function parseFolder(firstDir, folderName, result = []) {
 async function build(sourceDir, destinationDir) {
   try {
     console.log(
-      '[START] Generate presentation from %s to %s',
+      '[%s] Generate presentation from %s to %s',
+      'START'.green,
       sourceDir,
       destinationDir
     )
-    console.log('[CONFIG] Pandoc args: %s', pandocParam)
+    console.log('[%s] Pandoc args: %s', 'CONFIG'.green, pandocParam)
 
     await parseFolder(sourceDir, sourceDir)
       .then(
@@ -119,15 +126,15 @@ async function build(sourceDir, destinationDir) {
           })
         },
         (err) => {
-          console.log('[ERR] - %s', err)
+          console.log('[ERR] - %s'.red, err)
         }
       )
       .then(() => {
-        console.log('[END]')
+        console.log('[%s]', 'END'.green)
       })
   } catch (e) {
     // Catch anything bad that happens
-    console.error("We've thrown! Whoops!", e)
+    console.error("OOps we're thrown!".red, e)
     return false
   }
 
@@ -142,12 +149,12 @@ async function build(sourceDir, destinationDir) {
  */
 async function start_build(args, sourceFolder, destinationFolder) {
   if (args[2] && (buildParam === args[2] || servParam === args[2])) {
-    console.log('[START] - Build')
+    console.log('[%s] - Build', 'START'.green)
 
     const resBuild = await build(sourceFolder, destinationFolder)
     return resBuild
   } else {
-    console.log('[END] - No action specified => No action done')
+    console.log('[%s] - No action specified => No action done', 'END'.green)
   }
   return true
 }
@@ -162,7 +169,7 @@ async function start_build(args, sourceFolder, destinationFolder) {
  * @param {*} config configuration lu
  */
 async function start_server(sourceFolder, destinationFolder, config) {
-  console.log('[START] - express server')
+  console.log('[%s] - express server', 'START'.green)
 
   /**
    * Return all the /socket.io.*.js|map call to
@@ -234,7 +241,7 @@ async function start_server(sourceFolder, destinationFolder, config) {
  * @param {*} destinationFolder repertoire destination
  */
 async function start_sync(sourceFolder, destinationFolder) {
-  console.log('[START] - file sync')
+  console.log('[%s] - file sync', 'START'.green)
   fs.watch(sourceFolder, { recursive: true }, function (event, filename) {
     if (filename) {
       const filePath = path.join(sourceFolder, filename)
