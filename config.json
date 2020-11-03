@@ -11,6 +11,6 @@
     "sourceDir": "./src",
     "destinationDir": "./docs",
     "server_port": 8080,
-    "pandocParam": "-t revealjs -s -V revealjs-url=https://unpkg.com/reveal.js@3.9.2 -V transition=cube"
+    "pandocParam": "-t revealjs -s -V revealjs-url=https://unpkg.com/reveal.js@4.1.0 -V transition=cube"
   }
 }
