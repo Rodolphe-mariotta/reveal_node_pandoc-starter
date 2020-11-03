@@ -8,8 +8,8 @@ margin: 0.0004
 minScale: 0.1
 maxScale: 2.0
 parallaxBackgroundSize: 3000px 2000px
-parallaxBackgroundHorizontal: 400
-parallaxBackgroundVertical: 200
+parallaxBackgroundHorizontal: 350
+parallaxBackgroundVertical: 180
 autoSlide: 6000
 ---
 
