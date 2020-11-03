@@ -13,7 +13,7 @@ Vous devez créer les markdown des presentations dans le repertoire src/ vous po
 
 Ce projet à besoin des éléments suivant :
 
-- pandoc
+- pandoc ([doc sur les présentations](https://pandoc.org/MANUAL.html#producing-slide-shows-with-pandoc))
 - node (/yarn)
 - votre bonne humeur.
 

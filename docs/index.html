@@ -9,8 +9,8 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="https://unpkg.com/reveal.js@3.9.2/css/reset.css">
-  <link rel="stylesheet" href="https://unpkg.com/reveal.js@3.9.2/css/reveal.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@4.1.0/dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@4.1.0/dist/reveal.css">
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -80,19 +80,9 @@
     code span.va { color: #19177c; } /* Variable */
     code span.vs { color: #4070a0; } /* VerbatimString */
     code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
   </style>
-  <link rel="stylesheet" href="https://unpkg.com/reveal.js@3.9.2/css/theme/black.css" id="theme">
-  <!-- Printing and PDF exports -->
-  <script>
-    var link = document.createElement( 'link' );
-    link.rel = 'stylesheet';
-    link.type = 'text/css';
-    link.href = window.location.search.match( /print-pdf/gi ) ? 'https://unpkg.com/reveal.js@3.9.2/css/print/pdf.css' : 'https://unpkg.com/reveal.js@3.9.2/css/print/paper.css';
-    document.getElementsByTagName( 'head' )[0].appendChild( link );
-  </script>
-  <!--[if lt IE 9]>
-  <script src="https://unpkg.com/reveal.js@3.9.2/lib/js/html5shiv.js"></script>
-  <![endif]-->
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@4.1.0/dist/theme/black.css" id="theme">
 </head>
 <body>
   <div class="reveal">
@@ -126,30 +116,30 @@
 </section>
 <section id="forkme" class="slide level3">
 <h3><a href="https://github.com/Rodolphe-mariotta/reveal_node_pandoc-starter">forkme</a></h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># forker le dépot</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="co"># et cloner votre fork</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">git</span> clone ..._pandoc-starter.git</span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="bu">cd</span> reveal_node_pandoc-starter</span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="ex">yarn</span> install</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="co"># forker le dépot</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="co"># et cloner votre fork</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="fu">git</span> clone ..._pandoc-starter.git</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a><span class="bu">cd</span> reveal_node_pandoc-starter</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a><span class="ex">yarn</span> install</span></code></pre></div>
 </section>
 <section id="utilisation" class="slide level3">
 <h3>Utilisation</h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># éditer/créer des fichiers  markdown dans src/</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="ex">code</span> src/index.md <span class="co">#(ce ficher)</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="ex">code</span> src/demo.md  <span class="co">#(fichier d&#39;exemple)</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="co"># éditer/créer des fichiers  markdown dans src/</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="ex">code</span> src/index.md #(ce ficher)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a><span class="ex">code</span> src/demo.md  #(fichier d<span class="st">&#39;exemple)</span></span></code></pre></div>
 </section>
 <section id="serve-ou-build" class="slide level3">
 <h3>“Serve” ou “build”</h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># construire les présentations</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="ex">yarn</span> build <span class="co">##  construit les présentations dans output/</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="co"># ou</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="ex">yarn</span> serve <span class="co">## (build) et demarre un serveur web</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="co"># construire les présentations</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a><span class="ex">yarn</span> build ##  construit les présentations dans output/</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a><span class="co"># ou</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a><span class="ex">yarn</span> serve ## (build) <span class="ex">et</span> demarre un serveur web</span></code></pre></div>
 </section>
 <section id="githubpages-production" class="slide level3">
 <h3>GithubPages / Production</h3>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="va">NODE_ENV=</span>production <span class="ex">yarn</span> build</span>
-<span id="cb4-2"><a href="#cb4-2"></a></span>
-<span id="cb4-3"><a href="#cb4-3"></a><span class="co"># cf configuration dans config.json</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="va">NODE_ENV=</span>production <span class="ex">yarn</span> build</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a><span class="co"># cf configuration dans config.json</span></span></code></pre></div>
 </section></section>
 <section>
 <section id="des-bonus" class="title-slide slide level1">
@@ -177,12 +167,17 @@
     </div>
   </div>
 
-  <script src="https://unpkg.com/reveal.js@3.9.2/js/reveal.js"></script>
+  <script src="https://unpkg.com/reveal.js@4.1.0/dist/reveal.js"></script>
+
+  // reveal.js plugins
+  <script src="https://unpkg.com/reveal.js@4.1.0/plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@4.1.0/plugin/search/search.js"></script>
+  <script src="https://unpkg.com/reveal.js@4.1.0/plugin/zoom/zoom.js"></script>
 
   <script>
 
       // Full list of configuration options available at:
-      // https://github.com/hakimel/reveal.js#configuration
+      // https://revealjs.com/config/
       Reveal.initialize({
         // Push each slide change to the browser history
         history: true,
@@ -198,19 +193,19 @@
         parallaxBackgroundSize: '3000px 2000px', // CSS syntax, e.g. "2100px 900px"
         // Amount to move parallax background (horizontal and vertical) on slide change
         // Number, e.g. 100
-        parallaxBackgroundHorizontal: 400,
-        parallaxBackgroundVertical: 200,
+        parallaxBackgroundHorizontal: 350,
+        parallaxBackgroundVertical: 180,
         // Factor of the display size that should remain empty around the content
         margin: 0.0004,
         // Bounds for smallest/largest possible scale to apply to content
         minScale: 0.1,
         maxScale: 2.0,
 
-        // Optional reveal.js plugins
-        dependencies: [
-          { src: 'https://unpkg.com/reveal.js@3.9.2/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-          { src: 'https://unpkg.com/reveal.js@3.9.2/plugin/zoom-js/zoom.js', async: true },
-          { src: 'https://unpkg.com/reveal.js@3.9.2/plugin/notes/notes.js', async: true }
+        // reveal.js plugins
+        plugins: [
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
         ]
       });
     </script>
